@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kızılcık Oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Kızılcık Oyunu</h1>
+    <div id="game-info">
+        <label for="difficulty">Zorluk:</label>
+        <select id="difficulty">
+            <option value="easy">Kolay</option>
+            <option value="normal" selected>Normal</option>
+            <option value="hard">Zor</option>
+            <option value="veryhard">Çok Zor</option>
+        </select>
+        <div id="level-display">Seviye: 1</div>
+        <div id="timer-display">Süre: 30</div>
+        <div id="score">Puan: 0</div>
+        <div id="score-target-display">Hedef: 20</div>
+        <button id="start-button">Başlat</button>
+    </div>
+
+    <div id="canvas-container">
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+    <div id="touch-controls">
+        <div class="touch-group touch-move">
+            <button id="touch-up" class="touch-button">⬆️</button>
+            <button id="touch-left" class="touch-button">⬅️</button>
+            <button id="touch-down" class="touch-button">⬇️</button>
+            <button id="touch-right" class="touch-button">➡️</button>
+        </div>
+        <div class="touch-group touch-shoot">
+             <button id="touch-shoot" class="touch-button">💥</button> 
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

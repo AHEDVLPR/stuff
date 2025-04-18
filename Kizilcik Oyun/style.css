@@ -1,0 +1,168 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    padding: 10px;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #d14545; /* Light red/cranberry color */
+    margin-top: 0;
+}
+
+#game-info {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    justify-content: center; /* Center items when wrapped */
+    align-items: center;
+    gap: 15px; /* Adjust gap */
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 800px; /* Match canvas max width */
+}
+
+#score,
+#level-display,
+#timer-display,
+#score-target-display {
+    font-weight: bold;
+    min-width: 70px; /* Adjust min-width */
+    text-align: center;
+    padding: 5px 0;
+}
+
+#canvas-container {
+    width: 100%;
+    max-width: 800px; /* Max width of the game */
+    /* Maintain aspect ratio of 800/600 = 4/3 */
+    aspect-ratio: 800 / 600;
+    margin-bottom: 100px; /* Add space below canvas for touch controls */
+}
+
+canvas {
+    border: 1px solid black;
+    background-color: #fff;
+    display: block; /* Remove extra space below canvas */
+    width: 100%; /* Fill the container */
+    height: 100%; /* Fill the container */
+}
+
+/* --- Touch Controls --- */
+#touch-controls {
+    display: none; /* Hidden by default, shown via media query */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(200, 200, 200, 0.8);
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: center; /* Vertically align groups if needed */
+    z-index: 10;
+}
+
+.touch-group {
+    display: flex;
+    gap: 10px;
+}
+
+.touch-move {
+    /* Example using Grid for movement keys */
+    display: grid;
+    grid-template-areas:
+        ". up ."
+        "left down right";
+    grid-gap: 5px;
+}
+
+#touch-up { grid-area: up; }
+#touch-left { grid-area: left; }
+#touch-down { grid-area: down; }
+#touch-right { grid-area: right; }
+
+.touch-button {
+    font-size: 1.8em;
+    padding: 10px;
+    min-width: 50px;
+    min-height: 50px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #eee;
+    cursor: pointer; /* For desktop testing */
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* Safari */
+    touch-action: manipulation; /* Improve touch responsiveness */
+    display: flex; /* Center icon */
+    justify-content: center;
+    align-items: center;
+}
+
+.touch-button:active {
+    background-color: #ccc;
+}
+
+#touch-shoot .touch-button {
+    font-size: 2.5em; /* Make shoot button bigger */
+    min-width: 70px;
+    min-height: 70px;
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 820px) { /* Adjusted breakpoint */
+    body {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #game-info {
+        gap: 10px;
+    }
+
+    #touch-controls {
+        display: flex; /* Show touch controls */
+    }
+
+    /* Make canvas container slightly smaller than viewport width */
+    /* to avoid horizontal scrollbars if body has padding */
+     #canvas-container {
+         width: 98%; 
+         margin-left: auto;
+         margin-right: auto;
+     }
+}
+
+@media (max-width: 480px) {
+     h1 {
+        font-size: 1.2em;
+    }
+     #game-info {
+         /* Stack controls vertically if needed */
+         /* flex-direction: column; */
+         gap: 5px;
+     }
+    .touch-button {
+        font-size: 1.5em;
+        min-width: 45px;
+        min-height: 45px;
+        padding: 8px;
+    }
+     #touch-shoot .touch-button {
+        font-size: 2em;
+        min-width: 60px;
+        min-height: 60px;
+    }
+     #touch-controls {
+         padding: 5px;
+     }
+     .touch-group {
+         gap: 5px;
+     }
+} 
